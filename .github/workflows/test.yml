@@ -17,7 +17,7 @@ jobs:
         docker build . -t localhost:32000/testoo:1.0
         docker push localhost:32000/testoo:1.0
         kubectl apply -f testoo.yml
-        kubectl rollout status deployment testoo -n default --timeout=90s
+        kubectl rollout status deployment testoo-deployment -n default --timeout=90s
     - name: Test microk8s
       run: |
         kubectl get no
