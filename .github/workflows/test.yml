@@ -15,7 +15,8 @@ jobs:
     - name: Build and push
       run: |
         docker build . -t localhost:32000/testoo:1.0
-        docker push localhost:32000/testoo:1.0
+        docker push localhost:32000/testoo
+        kubectl apply -f testoo.yml
     - name: Test microk8s
       run: |
         kubectl get no

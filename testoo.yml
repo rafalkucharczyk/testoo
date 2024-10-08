@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testoo-deployment
+  labels:
+    app: testoo
+spec:
+  selector:
+    matchLabels:
+      app: testoo
+  template:
+    metadata:
+      labels:
+        app: testoo
+    spec:
+      containers:
+      - name: testoo
+        image: localhost:32000/testoo:1.0
