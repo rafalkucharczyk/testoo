@@ -6,15 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to install MicroK8s
     steps:
-    - uses: balchua/microk8s-actions@v0.4.3
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup microk8s
+      uses: balchua/microk8s-actions@v0.4.3
       with:
         addons: '["dns", "rbac", "hostpath-storage", "registry"]'
     - name: Build and push
       run: |
         docker build . -t localhost:32000/testoo:1.0
         docker push localhost:32000/testoo:1.0
-    - name: Test MicroK8s
-      id: myactions
+    - name: Test microk8s
       run: |
         kubectl get no
         kubectl get pods -A -o wide
