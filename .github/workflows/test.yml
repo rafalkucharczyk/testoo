@@ -9,6 +9,10 @@ jobs:
     - uses: balchua/microk8s-actions@v0.4.3
       with:
         addons: '["dns", "rbac", "hostpath-storage", "registry"]'
+    - name: Build and push
+      run: |
+        docker build . -t localhost:32000/testoo:1.0
+        docker push localhost:32000/testoo:1.0
     - name: Test MicroK8s
       id: myactions
       run: |
